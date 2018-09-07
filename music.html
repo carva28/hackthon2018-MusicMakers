@@ -7,26 +7,38 @@
 <title>Music Makers 2018 - Hackathon</title>
 <body>
 
-<h1 id="title_second">Music Makers 2018</h1>
+
+<div id="menu">
     
-<div class="topnav" id="myTopnav">
+    <div id="bpm">
+        <button>
+            <input type="number" min="40" max="200" value="128">
+            <h4>BPM</h4>
+        </button>
+    </div>
     
-    <a href="#contact"><button class="btn">PLAY</button></a>
-  <a href="#ze"><button class="btn">PAUSE</button></a>
-  <a href="#about"><button class="btn">STOP</button></a>
-    <a href="#oi"><button class="btn">RECORD</button></a>
-  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-    <i class="fa fa-bars"></i>
-  </a>
+    
+    <div class="topnav" id="myTopnav">
+    
+    <a><button id="play_btn" class="btn">PLAY</button></a>
+  <a><button id="pause_btn" class="btn">PAUSE</button></a>
+  <a><button id="stop_btn" class="btn">STOP</button></a>
+    <a><button id="record_btn"  class="btn">RECORD</button></a>
+
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+        
+        </div>
+        
 </div>
     
     
     
     <ul>
-  <li><a class="active" href="#home">Home</a></li>
+  <li><a class="active home" href="#home"><div id="bg_img"></div></a></li>
   <li><a href="#news">News</a></li>
-  <li><a href="#contact">Contact</a></li>
-  <li><a href="index.html"><img src=""></a></li>
+  <li><a href="index.html"><img id="img_door" src="imgs/back_home.svg"></a></li>
 </ul>
     
     

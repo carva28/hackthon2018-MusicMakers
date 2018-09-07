@@ -34,46 +34,53 @@ Yb, `88'  `88'  `88                                        Yb, `88'  `88'  `88  
 
 /* FONTS */
 
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,600');
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,600,200');
 
 
 *{
-    margin: auto;
+    margin: 0;
+    border: 0;
+    padding: 0;
 }
 
 
-h1{
+h1 {
     font-family: 'Nunito', sans-serif;
     color:white;
     font-weight: 600;
 }
 
-p{
+h4 {
+    font-family: 'Nunito', sans-serif;
+    color:#a72ce7;
+    font-weight: 200;
+}
+
+p {
     font-family: 'Nunito', sans-serif;
     color:#d4d4d4;
     font-weight: 400; 
 }
 
 
-body{
-    
+body {
     background-color: #373737;
     overflow: hidden;
     background-repeat: no-repeat;
 }
 
 
+
+/*INDEX PAGE*/
+
 #title_intro{
     margin-top: 20%;
     text-align: center;
 }
 
-
 #intro_text{
     text-align: center;
 }
-
-
 
 .intro_play{
     
@@ -96,16 +103,56 @@ body{
     color: white;
 }
 
+
+
+/*Navbar Principal top*/
+    
+#menu {
+    width: 100%;
+    overflow: hidden;  
+    background-color: #EBEBEB;
+    box-shadow: 0px 5px 10px;
+}
+
+#bpm {
+    width: 50%;
+    float: left;
+}
+
+#bpm button {
+    width: 21%;
+    background-color: black;
+    border-radius: 7px;
+    margin: 12px 10%;
+    float: right;
+}
+
+#bpm input {
+    width: 45px;
+    margin: 10px 0 10px 12px;
+    float: left;
+    background-color: transparent;
+    font-size: 15px;
+    padding: 5px 10px;
+    border-radius: 7px;
+    color: white;
+}
+
+#bpm h4 {
+    float: left;
+    margin: 14px 20px 14px 0;
+    font-size: 15px;
+}
+
 .topnav {
   overflow: hidden;
-  background-color: #EBEBEB;
-     box-shadow: 0px 5px 10px;
     color: #242424;
+    width: 50%;
+    float: left;
 }
 
 a .btn{
     font-size: 20px;
-
 }
 
 .topnav a {
@@ -118,24 +165,14 @@ a .btn{
   font-size: 10px;
 }
 
-
-.active {
-  background-color: #4CAF50;
-  color: white;
-}
-
 .topnav .icon {
   display: none;
 }
 
-
-
-
-
-
-
-
-
+input[type="number"]:hover,
+input[type="number"]:focus {
+  -moz-appearance: number-input;
+}
 
 
 
@@ -154,8 +191,13 @@ ul {
 
 li {
     float: left;
+    margin-left: 10%;
 }
 
+li a #img_door {
+    width: 10%;
+    padding-left: 5px;
+}
 li a {
     font-family: 'Nunito', sans-serif;
     display: block;
@@ -166,11 +208,23 @@ li a {
 }
 
 
-.active {
+/*.active {
     background-image: linear-gradient(to top right,#2bcbf7, #a72ce7);
+}*/
+
+.home{
+    background-image: url(../imgs/icon_touchpad.svg);
+        width: 10%;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
-
+.active{
+    background-image: url(../imgs/icon_touch.svg);
+        width: 10%;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
 
 
 
