@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<link rel="stylesheet" type="text/css" href="css/styles.css">
+<script src="js/scripts.js"></script>
+
+<title>Music Makers 2018 - Hackathon</title>
+<body>
+
+<h1 id="title_second">Music Makers 2018</h1>
+    
+<div class="topnav" id="myTopnav">
+    
+    <a href="#contact"><button class="btn">PLAY</button></a>
+  <a href="#ze"><button class="btn">PAUSE</button></a>
+  <a href="#about"><button class="btn">STOP</button></a>
+    <a href="#oi"><button class="btn">RECORD</button></a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+    
+    
+    
+    <ul>
+  <li><a class="active" href="#home">Home</a></li>
+  <li><a href="#news">News</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="index.html"><img src=""></a></li>
+</ul>
+    
+    
+<script>
+function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
+</script>
+    
+</body>
+</html>
