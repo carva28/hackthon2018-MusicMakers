@@ -190,8 +190,8 @@ ul {
 }
 
 li {
-    float: left;
-    margin-left: 10%;
+    float: left;    
+    width: 33.33333333%;
 }
 
 li a #img_door {
@@ -212,24 +212,22 @@ li a {
     background-image: linear-gradient(to top right,#2bcbf7, #a72ce7);
 }*/
 
-.home{
-    background-image: url(../imgs/icon_touchpad.svg);
-        width: 10%;
-    background-size: contain;
-    background-repeat: no-repeat;
+.sound i{
+    color:white;
+    font-size: 40px;
+    
 }
 
-.active{
-    background-image: url(../imgs/icon_touch.svg);
-        width: 10%;
-    background-size: contain;
-    background-repeat: no-repeat;
+.home i{
+    color:#2bcbf7;
+    font-size: 40px;
 }
 
 
-
-
-
+.door i{
+    color:white;
+    font-size: 40px;
+}
 
 
 /*MEDIA QUERIES*/
