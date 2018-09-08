@@ -5,7 +5,20 @@ var oscServer, oscClient;
 
 io.set('log level', 1);
 y = [0,0,0]
-count = 0
+queue_size = 25
+queue = [0]
+for (var i = 0; i < queue_size-1; i++) {
+  queue.push(0);
+}
+c = 0
+threshold = 0.40
+pop_threshold = queue_size - 10
+
+function reset(queue, queue_size) {
+  for (var i = 0; i < queue_size; i++) {
+    queue[i] = 0;
+  }
+}
 
 io.sockets.on('connection', function (socket) {
   socket.on("config", function (obj) {
@@ -29,7 +42,7 @@ io.sockets.on('connection', function (socket) {
         if (x[i] < 0) {
           x[i] = -x[i];
         }
-        if (x[i] > 0.4) {
+        if (x[i] > threshold) {
           y[i] = 1
         }
         else {
@@ -37,9 +50,19 @@ io.sockets.on('connection', function (socket) {
         }
       }
       if ((y[0]+y[1]+y[2])>0) {
-        console.log(y + " - "+count);//, rinfo);
-        count += 1;
-        socket.emit("message", [y, [0]]);
+        queue.push(1);
+        queue.shift();
+        
+        counter = 0
+        for (var i = 0; i < queue_size; i++) {
+          counter += queue[i];
+        }
+        if (counter > pop_threshold) {
+          socket.emit("message", 1);
+          console.log("pop - " + c);
+          reset(queue, queue_size)
+          c += 1;
+        }
       }
     });
   });
