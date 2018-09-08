@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<title>HTML Tutorial</title>
+<body>
+
+    <p>Something</p>
+    <p id="escrevaquicaralho"></p>
+<script src="http://127.0.0.1:8081/socket.io/socket.io.js"></script>
+
+<script>
+    socket = io.connect('http://127.0.0.1', { port: 8081, rememberTransport: false});
+    console.log('oi');
+    socket.on('connect', function() {
+        // sends to socket.io server the host/port of oscServer
+        // and oscClient
+        socket.emit('config',
+            {
+                server: {
+                    port: 8888,
+                    //host: '127.0.0.1'
+                    host: '192.168.1.101'
+                },
+                client: {
+                    port: 3334,
+                    host: '127.0.0.1'
+                }
+            }
+        );
+    });
+
+    socket.on('message', function(obj) {
+        x = obj.splice(4,3);
+       // console.log(x);
+        if (flag_times_pressed === 1) {
+            queue.push(x);
+            //queue.push(JSON.stringify(x) + "<Br>");
+        }
+        if (queue.length === 120) {
+            processaTecla(dolly);
+        }
+    });
+
+
+  let queue = []
+  let dolly = ""
+  function processaTecla(evt) {
+      dolly = evt;
+    switch (evt.key) {
+        case ' ':
+            if (flag_times_pressed === 0){
+                console.log("Started Recording");    //start the recording process
+                flag_times_pressed = 1;
+            }
+            else if (flag_times_pressed === 1){
+                console.log("Stoped Recording - " + queue.length);      //stop the recording process 
+                flag_times_pressed = 0;
+                document.getElementById("escrevaquicaralho").innerHTML = queue;
+                queue = [];
+            }
+            break;
+    }
+}
+
+    let flag_times_pressed = 0;
+
+
+
+// SPRITE
+window.onkeypress = function (evt) {
+        processaTecla(evt);
+};
+
+</script>
+
+</body>
+</html> 
