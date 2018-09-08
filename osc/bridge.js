@@ -12,11 +12,34 @@ for (var i = 0; i < queue_size-1; i++) {
 }
 c = 0
 threshold = 0.40
-pop_threshold = queue_size - 10
+pop_threshold = queue_size - 10;
+Calibrate = true;
+virtualZeroHeading = 0;
 
 function reset(queue, queue_size) {
   for (var i = 0; i < queue_size; i++) {
     queue[i] = 0;
+  }
+}
+
+function calcDrumPart(heading) {
+  if (heading > 0) {
+    // 1 && 2
+    if (heading < 30) {
+      return 2;
+    }
+    else {
+      return 1;
+    }
+  }
+  else {
+    // 3 && 4
+    if (heading > -30) {
+      return 3;
+    }
+    else {
+      return 4;
+    }
   }
 }
 
@@ -31,15 +54,33 @@ io.sockets.on('connection', function (socket) {
     oscServer.on('message', function(msg, rinfo) {
       //console.log("Hi")
       x = msg.splice(4,3);
+      heading = parseInt(msg.splice(16,1))
+      
+      let virtualHeading = 0;
+
+      if (Calibrate == true) {
+        virtualZeroHeading = -heading;
+        Calibrate = false;
+      }
+      else {
+        virtualHeading = heading + virtualZeroHeading;
+        if (virtualHeading > 180) {
+          virtualHeading -= 180;
+        }
+      }
+      console.log(heading + "      " + virtualHeading)
+
       //string = ""
       //for (var i = 0; i < 3; i++) {
-      //  x[i] = x[i].toFixed(2);
+      //  k[i] = k[i].toFixed(2);
       //  //x[i] = Math.round(x[i]);
-      //  if (x[i] > 0) {
+      //  if (k[i] > 0) {
       //    string += " ";
       //  }
-      //  string += x[i].toString() + " "
+      //  string += k[i].toString() + " "
       //}
+      //console.log(string)
+
       for (var i = 0; i < 3; i++) {
         if (x[i] < 0) {
           x[i] = -x[i];
@@ -60,7 +101,8 @@ io.sockets.on('connection', function (socket) {
           counter += queue[i];
         }
         if (counter > pop_threshold) {
-          socket.emit("message", 1);
+          drum_part = calcDrumPart(virtualHeading);
+          socket.emit("message", drum_part);
           console.log("pop - " + c);
           reset(queue, queue_size)
           c += 1;
@@ -70,6 +112,5 @@ io.sockets.on('connection', function (socket) {
   });
   socket.on("message", function (obj) {
     oscClient.send(obj);
-    console.log("cenas");
   });
 });
