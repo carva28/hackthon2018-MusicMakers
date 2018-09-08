@@ -22,12 +22,14 @@ function reset(queue, queue_size) {
 
 io.sockets.on('connection', function (socket) {
   socket.on("config", function (obj) {
+    console.log("READY!");
     oscServer = new osc.Server(obj.server.port, obj.server.host);
     oscClient = new osc.Client(obj.client.host, obj.client.port);
 
     oscClient.send('/status', socket.sessionId + ' connected');
 
     oscServer.on('message', function(msg, rinfo) {
+      //console.log("Hi")
       x = msg.splice(4,3);
       //string = ""
       //for (var i = 0; i < 3; i++) {
@@ -68,5 +70,6 @@ io.sockets.on('connection', function (socket) {
   });
   socket.on("message", function (obj) {
     oscClient.send(obj);
+    console.log("cenas");
   });
 });
