@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <title>Music Makers 2018 - Hackathon</title>
+    <script src="js/time.js"></script>
+    <script src="http://127.0.0.1:8081/socket.io/socket.io.js"></script>
+
+    <script>
+        socket = io.connect(
+            'http://127.0.0.1',{
+                port: 8081,
+                rememberTransport: false
+            }
+        );
+        console.log('oi');
+        socket.on('connect', function() {
+        // sends to socket.io server the host/port of oscServer
+        // and oscClient
+            socket.emit('config', {
+                server: {
+                    port: 8888,
+                    //host: '127.0.0.1'
+                    host: '192.168.1.102'
+                },
+                client: {
+                    port: 3334,
+                    host: '127.0.0.1'
+                }
+            }
+        );
+    });
+    socket.on('message', function(obj) {
+        //var status = document.getElementById("status");
+        //status.innerHTML = obj[0];
+        console.log(obj);
+        
+        if (obj==1){
+            document.getElementById("audio_input").src="sons/prato_3_Audio%202-St.wav";
+        }
+    });
+    
+</script>
+</head>
+
+<body>
+
+    <div id="menu">
+        <div id="left">
+            <div id="logo">
+                <img src="imgs/logo.png" alt="Logo of Music Makers">
+            </div>
+        </div>
+
+        <div class="topnav" id="myTopnav">
+
+            <div id="bpm">
+                <input type="number" min="40" max="200" value="128">
+                <h4>BPM</h4>
+            </div>
+
+            <button id="record_btn"><i class="fas fa-circle"></i></button>
+            <button id="play_btn"><i class="fas fa-play"></i></button>
+            <button id="pause_btn"><i class="fas fa-pause"></i></button>
+            <!--<button id="stop_btn"><i class="fas fa-stop"></i></button>-->
+
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+
+        </div>
+    </div>
+
+    <audio controls>
+        <source id="audio_input" type="audio/wav">
+        <source id="audio_input" type="audio/mpeg">
+    </audio>
+
+    <div id="bateria">
+        <img src="imgs/plate.svg" id="prato1">
+        <img src="imgs/tambor.svg" id="tambor1">
+        <img src="imgs/tambor.svg" id="tambor2">
+        <img src="imgs/plate.svg" id="prato2">
+    </div>
+
+    <div id="Timeline">
+        <div id="Time">0s</div>
+        <div id="Waves"></div>
+    </div>
+
+    <ul id="nav_back">
+        <li><a class="home" href="index.html"><i class="fas fa-home"></i></a></li>
+        <li><a a class="music" href="choose_instrument.html"><i class="fas fa-music"></i></a></li>
+        <li id="selected"><a class="sound" href="player.html"><i class="fas fa-drum"></i></a></li>
+    </ul>
+
+
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
