@@ -7,11 +7,11 @@
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <title>Music Makers 2018 - Hackathon</title>
     <script src="js/time.js"></script>
-    <script src="http://127.0.0.1:8081/socket.io/socket.io.js"></script>
+    <script src="http://10.1.0.189:8081/socket.io/socket.io.js"></script>
 
     <script>
         socket = io.connect(
-            'http://127.0.0.1',{
+            'http://10.1.0.189',{
                 port: 8081,
                 rememberTransport: false
             }
@@ -39,23 +39,39 @@
         console.log(obj);
         
          if (obj == 1) {
-           var audio = new Audio('sons/1.mp3');
+           var audio = new Audio();
+             audio.src='sons/1.mp3';
            audio.play();
            console.log('play');
            document.getElementById('prato1').src = 'imgs/plate2.svg';
+           document.getElementById('prato2').src = 'imgs/plate1.svg';
+           document.getElementById('tambor2').src = 'imgs/tambor1.svg';
+           document.getElementById('tambor1').src = 'imgs/tambor1.svg';
        }else if(obj==2){
-			 var audio = new Audio('sons/2.mp3');
+			 var audio = new Audio();
+             audio.src = 'sons/2.mp3';
              audio.play();
              document.getElementById('tambor1').src = 'imgs/tambor2.svg';
+             document.getElementById('prato1').src = 'imgs/plate1.svg';
+             document.getElementById('prato2').src = 'imgs/plate1.svg';
+             document.getElementById('tambor2').src = 'imgs/tambor1.svg';
              console.log("play2");
 		}else if(obj==3){
             document.getElementById('tambor2').src = 'imgs/tambor2.svg';
-			var audio = new Audio('sons/3.mp3');
+            document.getElementById('prato1').src = 'imgs/plate1.svg';
+             document.getElementById('prato2').src = 'imgs/plate1.svg';
+             document.getElementById('tambor1').src = 'imgs/tambor1.svg';
+			var audio = new Audio();
+            audio.src = 'sons/3.mp3';
             audio.play();
             console.log("play3");
 		}else if(obj==4){
             document.getElementById('prato2').src = 'imgs/plate2.svg';
-			var audio = new Audio('sons/4.mp3');
+            document.getElementById('prato1').src = 'imgs/plate1.svg';
+             document.getElementById('tambor1').src = 'imgs/tambor1.svg';
+             document.getElementById('tambor2').src = 'imgs/tambor1.svg';
+			var audio = new Audio();
+            audio.src='sons/4.mp3';
             audio.play();
             console.log("play4");
 		}
@@ -94,8 +110,8 @@
 
     <div id="bateria">
         <img src="imgs/plate.svg" id="prato1">
-        <img src="imgs/tambor.svg" id="tambor1">
-        <img src="imgs/tambor.svg" id="tambor2">
+        <img src="imgs/tambor2.svg" id="tambor1">
+        <img src="imgs/tambor2.svg" id="tambor2">
         <img src="imgs/plate.svg" id="prato2">
     </div>
 
