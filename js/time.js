@@ -1,4 +1,4 @@
-var time = 0, timer;
+var time = 0, timer, recordValue = 0;
 
 window.onload = function () {
     start();
@@ -17,7 +17,13 @@ function start() {
 }
 
 function recordClick() {
-    timer = setInterval(startTimer, 1000);
+    if (recordValue === 0) {
+        timer = setInterval(startTimer, 1000);
+        recordValue = 1;
+    } else if (recordValue === 1) {
+        clearInterval(timer);
+        recordValue = 0;
+    }
 }
 
 function startTimer() {
@@ -25,15 +31,22 @@ function startTimer() {
     document.getElementById('Time').innerHTML = time + "s";
 }
 
-function stopClick() {
-    clearInterval(timer);
-    document.getElementById('Time').innerHTML = 0 + "s";
-}
-
-function pauseClick() {    
-    clearInterval(timer);
-}
-
 function playClick() {
     timer = setInterval(startTimer, 1000);
+}
+
+function stopClick() {
+    if (timer != false) {
+        clearInterval(timer);
+        timer = false;
+        document.getElementById('Time').innerHTML = 0 + "s";
+        time = 0;
+    }
+}
+
+function pauseClick() {
+    if (timer != false) {
+        clearInterval(timer);
+        timer = false;
+    }
 }
