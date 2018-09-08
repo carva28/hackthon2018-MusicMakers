@@ -1,4 +1,5 @@
-# hackthon2018-MusicMakers
+# hackathon2018-MusicMakers Front-end side
+
 
 ## Context:
 Project developed under the scope of Sunset Hackathon 2018. 
