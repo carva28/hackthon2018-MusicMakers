@@ -38,6 +38,21 @@ Yb, `88'  `88'  `88                                        Yb, `88'  `88'  `88  
     padding: 0;
 }
 
+@font-face {
+    font-family: Nunito_ExtraLight;
+    src: url(../fonts/Nunito-ExtraLight.ttf);
+}
+
+@font-face {
+    font-family: Nunito_Regular;
+    src: url(../fonts/Nunito-Regular.ttf);
+}
+
+@font-face {
+    font-family: Nunito_SemiBold;
+    src: url(../fonts/Nunito-SemiBold.ttf);
+}
+
 body {
     background-color: #252c3b;
     /*overflow: hidden;*/
@@ -55,21 +70,18 @@ body {
 }
 
 h1 {
-    font-family: 'Nunito', sans-serif;
+    font-family: Nunito_SemiBold;
     color: white;
-    font-weight: 600;
 }
 
 h4 {
-    font-family: 'Nunito', sans-serif;
+    font-family: Nunito_ExtraLight;
     color: #a72ce7;
-    font-weight: 200;
 }
 
 p {
-    font-family: 'Nunito', sans-serif;
+    font-family: Nunito_Regular;
     color: #d4d4d4;
-    font-weight: 400;
 }
 
 /*INDEX PAGE*/
@@ -83,7 +95,7 @@ p {
 }
 
 #intro_play {
-    font-family: Nunito;
+    font-family: Nunito_Regular;
     background-color: #2bcbf7;
     padding: 15px 30px;
     border-radius: 30px;
@@ -228,7 +240,7 @@ input[type="number"]:focus {
 }
 
 #nav_back li a {
-    font-family: 'Nunito', sans-serif;
+    font-family: Nunito_Regular;
     display: block;
     color: white;
     text-align: center;
@@ -297,8 +309,7 @@ input[type="number"]:focus {
     margin: 10px;
     border-radius: 20px;
     color: white;
-    font-family: Nunito;
-    font-weight: 600;
+    font-family: Nunito_SemiBold;
     padding: 20px 25px;
 }
 
