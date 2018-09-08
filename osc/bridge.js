@@ -29,7 +29,7 @@ io.sockets.on('connection', function (socket) {
         if (x[i] < 0) {
           x[i] = -x[i];
         }
-        if (x[i] > 0.5) {
+        if (x[i] > 0.4) {
           y[i] = 1
         }
         else {
@@ -39,8 +39,8 @@ io.sockets.on('connection', function (socket) {
       if ((y[0]+y[1]+y[2])>0) {
         console.log(y + " - "+count);//, rinfo);
         count += 1;
+        socket.emit("message", [y, [0]]);
       }
-      socket.emit("message", [y, [0]]);
     });
   });
   socket.on("message", function (obj) {
