@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="css/styles.css">
+<script src="js/scripts.js"></script>
+
+<title>Music Makers 2018 - Hackathon</title>
+<body>
+
+
+<div id="menu">
+    
+    <div id="bpm">
+        <button>
+            <input type="number" min="40" max="200" value="128">
+            <h4>BPM</h4>
+        </button>
+    </div>
+    
+    
+    <div class="topnav" id="myTopnav">
+    
+    <a><button id="play_btn" class="btn">PLAY</button></a>
+  <a><button id="pause_btn" class="btn">PAUSE</button></a>
+  <a><button id="stop_btn" class="btn">STOP</button></a>
+    <a><button id="record_btn"  class="btn">RECORD</button></a>
+
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+        
+        </div>
+        
+</div>
+    
+    <div id="pads">
+    
+    
+    </div>
+    
+    
+<ul id="nav_back">
+  <li><a class="home" href="music.html"><i class="fas fa-home"></i></a></li>
+  <li><a class="sound" href=""><i class="fas fa-share-alt"></i></a></li>
+  <li><a a class="door" href="index.html"><i class="fas fa-door-open"></i><div id="bg_img"></div></a></li>
+</ul>
+    
+    
+<script>
+function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
+</script>
+    
+</body>
+</html>
