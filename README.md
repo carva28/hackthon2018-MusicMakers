@@ -19,7 +19,7 @@ We are MusicMakers a team who developed a music instrument like GarangeBand or M
 
 We know the user is our goal so we design a UI that could allows the user interact perfectly with the Bitalino and can see some magic.
 
-(https://github.com/carva28/hackthon2018-MusicMakers/blob/newBranch/ezgif.com-video-to-gif.gif)
+<a href="https://imgflip.com/gif/2hmxr8"><img src="https://i.imgflip.com/2hmxr8.gif" title="made at imgflip.com"/></a>
 
 ### Images
 
